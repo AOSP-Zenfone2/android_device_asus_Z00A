@@ -20,9 +20,18 @@
 # to only building on ARM if they include assembly. Individual makefiles
 # are responsible for having their own logic, for fine-grained control.
 
-ifneq ($(filter Z00A,$(TARGET_DEVICE)),)
+ifneq ($(filter Z00A, $(TARGET_DEVICE)),)
+ 
+ LOCAL_PATH := $(call my-dir)
 
-LOCAL_PATH := $(call my-dir)
+# This contains the module build definitions for the hardware-specific
+# components for this device.
+#
+# As much as possible, those components should be built unconditionally,
+# with device-specific names to avoid collisions, to avoid device-specific
+# bitrot and build breakages. Building a component unconditionally does
+# *not* include it on all devices, so it is safe even with hardware-specific
+# components.
 
 include $(call all-makefiles-under,$(LOCAL_PATH))
 

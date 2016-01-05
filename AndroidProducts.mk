@@ -15,4 +15,6 @@
 #
 
 PRODUCT_MAKEFILES := \
-     $(LOCAL_DIR)/device.mk
+     $(LOCAL_DIR)/device.mk \
+     $(LOCAL_DIR)/aosp_Z00A.mk \
+     $(LOCAL_DIR)/full_Z00A.mk \
